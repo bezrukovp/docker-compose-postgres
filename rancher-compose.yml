@@ -1,0 +1,19 @@
+version: '2'
+services:
+
+  postgres:
+    scale: 1
+    start_on_create: true
+    health_check:
+      interval: 2000
+      port: 5432
+      healthy_threshold: 2
+      response_timeout: 2000
+      unhealthy_threshold: 3
+      strategy: none
+      initializing_timeout: 60000
+      reinitializing_timeout: 60000
+
+  adminer:
+    scale: 1
+    start_on_create: true

@@ -1,0 +1,21 @@
+version: '2'
+services:
+
+  postgres:
+    image: postgres:alpine
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    volumes:
+      - data:/var/lib/postgresql/data:Z
+    env_file: ${PWD}/.env
+    labels:
+      service: postgres
+      io.rancher.container.pull_image: always
+
+  adminer:
+    image: adminer
+
+volumes:
+  data:
+    driver: "local"
